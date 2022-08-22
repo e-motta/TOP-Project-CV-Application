@@ -17,3 +17,7 @@ html {
 .small-spacer {
   height: 12px;
 }
+
+.app {
+  min-width: 1460px;
+}

@@ -18,7 +18,7 @@ class PreviewHeader extends React.Component {
     } = this.props;
 
     return (
-      <header className="header preview-header">
+      <header className="header-inner preview-header">
         <div className="header-left">
           <div className="name">
             <span>{`${firstName} ${lastName}`}</span>

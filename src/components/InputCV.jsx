@@ -45,6 +45,7 @@ class InputCV extends React.Component {
         <div className="spacer" />
 
         <SectionTitle title="Professional Experience" />
+
         {professionalExperiences.map((item) => (
           <div key={item.id}>
             <InputProfessionalExperience
@@ -55,8 +56,11 @@ class InputCV extends React.Component {
           </div>
         ))}
 
-        <button type="button" className="add-btn">+ Add professional experience</button>
-        <div className="spacer" />
+        <div>
+          <div className="small-spacer" />
+          <button type="button" className="add-btn">+ Add professional experience</button>
+          <div className="spacer" />
+        </div>
 
         <SectionTitle title="Education" />
 
@@ -66,12 +70,16 @@ class InputCV extends React.Component {
               educationItem={item}
               handleEducation={handleEducation}
             />
-            <div className="spacer" />
+            <div className="small-spacer" />
           </div>
         ))}
 
-        <button type="button" className="add-btn">+ Add education</button>
-        <div className="spacer" />
+        <div>
+          <div className="small-spacer" />
+          <button type="button" className="add-btn">+ Add education</button>
+          <div className="spacer" />
+        </div>
+
       </div>
     );
   }

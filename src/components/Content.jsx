@@ -25,15 +25,6 @@ class Content extends React.Component {
           current: false,
           description: '',
         },
-        {
-          id: uniqid(),
-          jobTitle: '',
-          employer: '',
-          startDate: '',
-          endDate: '',
-          current: false,
-          description: '',
-        },
       ],
       education: [
         {

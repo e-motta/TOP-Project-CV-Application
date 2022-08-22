@@ -42,6 +42,8 @@ class PreviewCV extends React.Component {
           <div className="spacer" />
 
           {professionalExperiences.length !== 0
+          && (professionalExperiences[0].jobTitle !== ''
+              && professionalExperiences[0].employer !== '')
             ? (
               <div>
                 <SectionTitle title="Professional Experience" />
@@ -51,17 +53,23 @@ class PreviewCV extends React.Component {
             : <div />}
 
           {professionalExperiences.map((item) => (
-            <PreviewItem
-              position={item.jobTitle}
-              place={item.employer}
-              startDate={item.startDate}
-              endDate={item.endDate}
-              description={item.description}
-              key={item.id}
-            />
+            item.jobTitle !== '' && item.employer !== ''
+              ? (
+                <PreviewItem
+                  position={item.jobTitle}
+                  place={item.employer}
+                  startDate={item.startDate}
+                  endDate={item.endDate}
+                  description={item.description}
+                  key={item.id}
+                />
+              )
+              : <div key={item.id} />
           ))}
 
           {education.length !== 0
+          && (education[0].school !== ''
+              || education[0].degree !== '')
             ? (
               <div>
                 <SectionTitle title="Education" />
@@ -71,14 +79,18 @@ class PreviewCV extends React.Component {
             : <div />}
 
           {education.map((item) => (
-            <PreviewItem
-              position={item.degree}
-              place={item.school}
-              startDate={item.startDate}
-              endDate={item.endDate}
-              description={item.description}
-              key={item.id}
-            />
+            item.degree !== '' && item.school !== ''
+              ? (
+                <PreviewItem
+                  position={item.degree}
+                  place={item.school}
+                  startDate={item.startDate}
+                  endDate={item.endDate}
+                  description={item.description}
+                  key={item.id}
+                />
+              )
+              : <div key={item.id} />
           ))}
         </div>
       </div>

@@ -49,14 +49,18 @@ class InputProfessionalExperience extends React.Component {
               type="date"
               id={professionalExperience.id}
             />
-            <SimpleInput
-              parent="professional-experience"
-              value={professionalExperience.endDate}
-              name="endDate"
-              title="End date"
-              type="date"
-              id={professionalExperience.id}
-            />
+
+            {!professionalExperience.current
+              ? (
+                <SimpleInput
+                  parent="professional-experience"
+                  value={professionalExperience.endDate}
+                  name="endDate"
+                  title="End date"
+                  type="date"
+                  id={professionalExperience.id}
+                />
+              ) : <div />}
           </div>
           <CheckInput
             parent="professional-experience"
