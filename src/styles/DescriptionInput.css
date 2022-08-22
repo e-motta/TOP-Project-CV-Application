@@ -1,0 +1,11 @@
+.description-component {
+  width: auto;
+  height: 116px;
+  grid-column: 1 / 3;
+}
+
+.description-input {
+  width: stretch;
+  height: 100px;
+  resize: none;
+}

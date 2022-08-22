@@ -1,0 +1,17 @@
+.input-cv {
+  min-width: 630px;
+  padding: 50px 30px 0 30px;
+}
+
+.add-btn {
+  background-color: white;
+  border: 0;
+  color: rgb(95, 95, 95);
+  font-size: inherit;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.add-btn:hover {
+  color: rgb(0, 0, 0);
+}

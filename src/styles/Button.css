@@ -1,0 +1,36 @@
+.btn {
+  border: 0;
+  margin: 16px auto 0 0;
+  padding: 3px 18px;
+  border-radius: 15px;
+  cursor: pointer;
+  color: rgb(62, 62, 62);
+}
+
+.submit {
+  background-color: rgba(200, 232, 201, 0.672);
+}
+
+.submit:hover {
+  background-color: #a5e6a7;
+}
+
+.edit {
+  background-color: #d2d2d292;
+}
+
+.edit:hover {
+  background-color: #d2d2d2;
+}
+
+.delete {
+  background-color: #e6aaaab0;
+  margin-left: auto;
+  margin-right: 0;
+}
+
+.delete:hover {
+  background-color: #e6aaaa;
+  margin-left: auto;
+  margin-right: 0;
+}

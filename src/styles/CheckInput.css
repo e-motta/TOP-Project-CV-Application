@@ -1,0 +1,11 @@
+.check-input {
+  margin-top: auto;
+  margin-bottom: 8px;
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+.check-input input {
+  background-color: red;
+}

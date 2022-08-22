@@ -1,0 +1,28 @@
+.preview-header {
+  font-weight: bold;
+  min-height: 140px;
+  padding: 20px 70px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.name {
+  font-size: 1.2em;
+}
+
+.job-title {
+  font-weight: 100;
+  font-size: .8em;
+}
+
+.email, .phone {
+  font-size: .6em;
+  font-weight: 300;
+}
+
+.header-right {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-end;
+}
