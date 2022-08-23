@@ -15,7 +15,12 @@ class InputProfessionalExperience extends React.Component {
   }
 
   render() {
-    const { professionalExperience, handleProfessionalExperience } = this.props;
+    const {
+      professionalExperience,
+      handleProfessionalExperience,
+      deleteProfessionalExperience,
+    } = this.props;
+
     return (
       <div className="input-professional-experience">
         <form
@@ -74,8 +79,17 @@ class InputProfessionalExperience extends React.Component {
             value={professionalExperience.description}
             title="Description"
           />
-          <Button type="submit" />
-          <Button type="delete" />
+          <Button
+            type="submit"
+            parent="professional-experience"
+            id={`${professionalExperience.id}-submit`}
+          />
+          <Button
+            type="delete"
+            id={`${professionalExperience.id}-delete`}
+            parent="professional-experience"
+            deleteProfessionalExperience={deleteProfessionalExperience}
+          />
         </form>
       </div>
     );
@@ -85,6 +99,7 @@ class InputProfessionalExperience extends React.Component {
 InputProfessionalExperience.propTypes = {
   professionalExperience: PropTypes.object.isRequired,
   handleProfessionalExperience: PropTypes.func.isRequired,
+  deleteProfessionalExperience: PropTypes.func.isRequired,
 };
 
 export default InputProfessionalExperience;

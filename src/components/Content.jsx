@@ -42,6 +42,8 @@ class Content extends React.Component {
     this.handlePersonalDetails = this.handlePersonalDetails.bind(this);
     this.handleProfessionalExperience = this.handleProfessionalExperience.bind(this);
     this.handleEducation = this.handleEducation.bind(this);
+    this.deleteProfessionalExperience = this.deleteProfessionalExperience.bind(this);
+    this.deleteEducationItem = this.deleteEducationItem.bind(this);
   }
 
   handlePersonalDetails(e) {
@@ -101,6 +103,22 @@ class Content extends React.Component {
     this.setState({ education });
   }
 
+  deleteProfessionalExperience(e) {
+    let { professionalExperiences } = this.state;
+    professionalExperiences = professionalExperiences.filter((item) => (
+      `${item.id}-delete` !== e.target.id
+    ));
+    this.setState({ professionalExperiences });
+  }
+
+  deleteEducationItem(e) {
+    let { education } = this.state;
+    education = education.filter((item) => (
+      `${item.id}-delete` !== e.target.id
+    ));
+    this.setState({ education });
+  }
+
   render() {
     const {
       firstName,
@@ -127,6 +145,8 @@ class Content extends React.Component {
           handlePersonalDetails={this.handlePersonalDetails}
           handleProfessionalExperience={this.handleProfessionalExperience}
           handleEducation={this.handleEducation}
+          deleteProfessionalExperience={this.deleteProfessionalExperience}
+          deleteEducationItem={this.deleteEducationItem}
         />
         <PreviewCV
           firstName={firstName}

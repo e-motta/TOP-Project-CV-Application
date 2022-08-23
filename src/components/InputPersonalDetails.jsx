@@ -35,7 +35,7 @@ class InputPersonalDetails extends React.Component {
           <SimpleInput parent="personal-details" name="phone" title="Phone" type="tel" value={phone} />
           <SimpleInput parent="personal-details" name="jobTitle" title="Job title" type="text" value={jobTitle} />
           <DescriptionInput parent="personal-details" name="professionalSummary" title="Professional summary" value={professionalSummary} />
-          <Button type="submit" />
+          <Button type="submit" id="submit" parent="personal-details" />
         </form>
       </div>
     );

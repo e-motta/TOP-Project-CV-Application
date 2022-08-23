@@ -15,7 +15,11 @@ class InputEducation extends React.Component {
   }
 
   render() {
-    const { educationItem, handleEducation } = this.props;
+    const {
+      educationItem,
+      handleEducation,
+      deleteEducationItem,
+    } = this.props;
 
     return (
       <div className="input-education">
@@ -65,8 +69,17 @@ class InputEducation extends React.Component {
             name="description"
             title="Description"
           />
-          <Button type="submit" />
-          <Button type="delete" />
+          <Button
+            type="submit"
+            parent="education"
+            id={`${educationItem.id}-submit`}
+          />
+          <Button
+            type="delete"
+            id={`${educationItem.id}-delete`}
+            parent="education"
+            deleteEducationItem={deleteEducationItem}
+          />
         </form>
       </div>
     );
@@ -76,6 +89,7 @@ class InputEducation extends React.Component {
 InputEducation.propTypes = {
   educationItem: PropTypes.object.isRequired,
   handleEducation: PropTypes.func.isRequired,
+  deleteEducationItem: PropTypes.func.isRequired,
 };
 
 export default InputEducation;
