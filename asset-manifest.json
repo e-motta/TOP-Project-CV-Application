@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/TOP-Project-CV-Application/static/css/main.dac0a114.css",
+    "main.js": "/TOP-Project-CV-Application/static/js/main.5f05d2fb.js",
+    "index.html": "/TOP-Project-CV-Application/index.html",
+    "main.dac0a114.css.map": "/TOP-Project-CV-Application/static/css/main.dac0a114.css.map",
+    "main.5f05d2fb.js.map": "/TOP-Project-CV-Application/static/js/main.5f05d2fb.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.dac0a114.css",
+    "static/js/main.5f05d2fb.js"
+  ]
+}
