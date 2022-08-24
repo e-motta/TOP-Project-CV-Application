@@ -44,6 +44,9 @@ class Content extends React.Component {
     this.handleEducation = this.handleEducation.bind(this);
     this.deleteProfessionalExperience = this.deleteProfessionalExperience.bind(this);
     this.deleteEducationItem = this.deleteEducationItem.bind(this);
+    // eslint-disable-next-line max-len
+    this.handleCurrentCheckProfessionalExperience = this.handleCurrentCheckProfessionalExperience.bind(this);
+    this.handleCurrentCheckEducation = this.handleCurrentCheckEducation.bind(this);
   }
 
   handlePersonalDetails(e) {
@@ -70,7 +73,7 @@ class Content extends React.Component {
           jobTitle: inputs.get('jobTitle'),
           employer: inputs.get('employer'),
           startDate: inputs.get('startDate'),
-          endDate: inputs.get('endDate'),
+          endDate: inputs.get('current') === null ? inputs.get('endDate') : 'Present',
           current: inputs.get('current'),
           description: inputs.get('description'),
         };
@@ -92,7 +95,7 @@ class Content extends React.Component {
           school: inputs.get('school'),
           degree: inputs.get('degree'),
           startDate: inputs.get('startDate'),
-          endDate: inputs.get('endDate'),
+          endDate: inputs.get('current') === null ? inputs.get('endDate') : 'Present',
           current: inputs.get('current'),
           description: inputs.get('description'),
         };
@@ -101,6 +104,50 @@ class Content extends React.Component {
       return item;
     });
     this.setState({ education });
+  }
+
+  handleCurrentCheckProfessionalExperience(e) {
+    this.setState((state) => ({
+      professionalExperiences: state.professionalExperiences.map((item) => {
+        if (item.id === e.target.id) {
+          if (!item.current) {
+            return {
+              ...item,
+              current: true,
+              endDate: 'Present',
+            };
+          }
+          return {
+            ...item,
+            current: false,
+            endDate: '',
+          };
+        }
+        return item;
+      }),
+    }));
+  }
+
+  handleCurrentCheckEducation(e) {
+    this.setState((state) => ({
+      education: state.education.map((item) => {
+        if (item.id === e.target.id) {
+          if (!item.current) {
+            return {
+              ...item,
+              current: true,
+              endDate: 'Present',
+            };
+          }
+          return {
+            ...item,
+            current: false,
+            endDate: '',
+          };
+        }
+        return item;
+      }),
+    }));
   }
 
   deleteProfessionalExperience(e) {
@@ -130,7 +177,6 @@ class Content extends React.Component {
       professionalExperiences,
       education,
     } = this.state;
-
     return (
       <div className="content">
         <InputCV
@@ -147,6 +193,8 @@ class Content extends React.Component {
           handleEducation={this.handleEducation}
           deleteProfessionalExperience={this.deleteProfessionalExperience}
           deleteEducationItem={this.deleteEducationItem}
+          handleCurrentCheckProfessionalExperience={this.handleCurrentCheckProfessionalExperience}
+          handleCurrentCheckEducation={this.handleCurrentCheckEducation}
         />
         <PreviewCV
           firstName={firstName}

@@ -19,6 +19,7 @@ class InputEducation extends React.Component {
       educationItem,
       handleEducation,
       deleteEducationItem,
+      handleCurrentCheckEducation,
     } = this.props;
 
     return (
@@ -35,6 +36,7 @@ class InputEducation extends React.Component {
             title="School"
             type="text"
             id={educationItem.id}
+            required="required"
           />
           <SimpleInput
             parent="education"
@@ -42,6 +44,7 @@ class InputEducation extends React.Component {
             title="Degree"
             type="text"
             id={educationItem.id}
+            required="required"
           />
           <div className="date-wrapper">
             <SimpleInput
@@ -50,19 +53,26 @@ class InputEducation extends React.Component {
               title="Start date"
               type="date"
               id={educationItem.id}
+              required="required"
             />
-            <SimpleInput
-              parent="education"
-              name="endDate"
-              title="End date"
-              type="date"
-              id={educationItem.id}
-            />
+            {!educationItem.current
+              ? (
+                <SimpleInput
+                  parent="education"
+                  name="endDate"
+                  title="End date"
+                  type="date"
+                  id={educationItem.id}
+                />
+              ) : <div />}
           </div>
           <CheckInput
             parent="education"
             name="current"
             title="Currently studying there"
+            id={educationItem.id}
+            onCheck={handleCurrentCheckEducation}
+            checked={educationItem.current}
           />
           <DescriptionInput
             parent="education"
@@ -90,6 +100,7 @@ InputEducation.propTypes = {
   educationItem: PropTypes.object.isRequired,
   handleEducation: PropTypes.func.isRequired,
   deleteEducationItem: PropTypes.func.isRequired,
+  handleCurrentCheckEducation: PropTypes.func.isRequired,
 };
 
 export default InputEducation;

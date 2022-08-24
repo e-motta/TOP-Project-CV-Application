@@ -19,6 +19,7 @@ class InputProfessionalExperience extends React.Component {
       professionalExperience,
       handleProfessionalExperience,
       deleteProfessionalExperience,
+      handleCurrentCheckProfessionalExperience,
     } = this.props;
 
     return (
@@ -32,34 +33,32 @@ class InputProfessionalExperience extends React.Component {
           <SimpleInput
             parent="professional-experience"
             name="jobTitle"
-            value={professionalExperience.jobTitle}
             title="Job title"
             type="text"
             id={professionalExperience.id}
+            required="required"
           />
           <SimpleInput
             parent="professional-experience"
             name="employer"
-            value={professionalExperience.employer}
             title="Employer"
             type="text"
             id={professionalExperience.id}
+            required="required"
           />
           <div className="date-wrapper">
             <SimpleInput
               parent="professional-experience"
-              value={professionalExperience.startDate}
               name="startDate"
               title="Start date"
               type="date"
               id={professionalExperience.id}
+              required="required"
             />
-
             {!professionalExperience.current
               ? (
                 <SimpleInput
                   parent="professional-experience"
-                  value={professionalExperience.endDate}
                   name="endDate"
                   title="End date"
                   type="date"
@@ -68,15 +67,15 @@ class InputProfessionalExperience extends React.Component {
               ) : <div />}
           </div>
           <CheckInput
-            parent="professional-experience"
             name="current"
-            value={professionalExperience.current}
             title="Currently working there"
+            id={professionalExperience.id}
+            onCheck={handleCurrentCheckProfessionalExperience}
+            checked={professionalExperience.current}
           />
           <DescriptionInput
             parent="professional-experience"
             name="description"
-            value={professionalExperience.description}
             title="Description"
           />
           <Button
@@ -100,6 +99,7 @@ InputProfessionalExperience.propTypes = {
   professionalExperience: PropTypes.object.isRequired,
   handleProfessionalExperience: PropTypes.func.isRequired,
   deleteProfessionalExperience: PropTypes.func.isRequired,
+  handleCurrentCheckProfessionalExperience: PropTypes.func.isRequired,
 };
 
 export default InputProfessionalExperience;

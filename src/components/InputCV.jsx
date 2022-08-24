@@ -29,6 +29,8 @@ class InputCV extends React.Component {
       handleEducation,
       deleteProfessionalExperience,
       deleteEducationItem,
+      handleCurrentCheckProfessionalExperience,
+      handleCurrentCheckEducation,
     } = this.props;
 
     return (
@@ -54,6 +56,7 @@ class InputCV extends React.Component {
               professionalExperience={item}
               handleProfessionalExperience={handleProfessionalExperience}
               deleteProfessionalExperience={deleteProfessionalExperience}
+              handleCurrentCheckProfessionalExperience={handleCurrentCheckProfessionalExperience}
             />
             <div className="small-spacer" />
           </div>
@@ -73,6 +76,7 @@ class InputCV extends React.Component {
               educationItem={item}
               handleEducation={handleEducation}
               deleteEducationItem={deleteEducationItem}
+              handleCurrentCheckEducation={handleCurrentCheckEducation}
             />
             <div className="small-spacer" />
           </div>
@@ -108,6 +112,8 @@ InputCV.propTypes = {
   handleEducation: PropTypes.func.isRequired,
   deleteProfessionalExperience: PropTypes.func.isRequired,
   deleteEducationItem: PropTypes.func.isRequired,
+  handleCurrentCheckProfessionalExperience: PropTypes.func.isRequired,
+  handleCurrentCheckEducation: PropTypes.func.isRequired,
 };
 
 export default InputCV;

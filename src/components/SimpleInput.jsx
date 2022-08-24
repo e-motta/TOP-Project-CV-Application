@@ -40,6 +40,7 @@ class SimpleInput extends React.Component {
       title,
       type,
       id,
+      required,
     } = this.props;
 
     const {
@@ -64,6 +65,7 @@ class SimpleInput extends React.Component {
           onBlur={this.onBlur}
           onInput={this.onFocus}
           placeholder={type === 'date' && focused ? 'MM/AAAA' : ''}
+          required={required}
         />
       </div>
     );
@@ -72,6 +74,7 @@ class SimpleInput extends React.Component {
 
 SimpleInput.defaultProps = {
   id: '0',
+  required: '',
 };
 
 SimpleInput.propTypes = {
@@ -80,6 +83,7 @@ SimpleInput.propTypes = {
   title: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
   id: PropTypes.string,
+  required: PropTypes.string,
 };
 
 export default SimpleInput;

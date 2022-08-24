@@ -9,16 +9,25 @@ class CheckInput extends React.Component {
   }
 
   render() {
-    const { parent, name, title } = this.props;
+    const {
+      name, title, id, onCheck,
+    } = this.props;
+
+    let { checked } = this.props;
+
+    if (checked === 'on') checked = true;
+
     return (
       <div className="check-input">
         <input
-          id={parent + title}
+          id={id}
           name={name}
           type="checkbox"
+          onChange={onCheck}
+          defaultChecked={checked}
         />
         <label
-          htmlFor={parent + title}
+          htmlFor={id}
         >
           {title}
         </label>
@@ -27,10 +36,16 @@ class CheckInput extends React.Component {
   }
 }
 
+CheckInput.defaultProps = {
+  checked: false,
+};
+
 CheckInput.propTypes = {
-  parent: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
+  onCheck: PropTypes.func.isRequired,
+  checked: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
 };
 
 export default CheckInput;
