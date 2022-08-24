@@ -27,6 +27,8 @@ class InputCV extends React.Component {
       handlePersonalDetails,
       handleProfessionalExperience,
       handleEducation,
+      addProfessionalExperience,
+      addEducation,
       deleteProfessionalExperience,
       deleteEducationItem,
       handleCurrentCheckProfessionalExperience,
@@ -64,7 +66,14 @@ class InputCV extends React.Component {
 
         <div>
           <div className="small-spacer" />
-          <button type="button" className="add-btn">+ Add professional experience</button>
+          <button
+            type="button"
+            className="add-btn"
+            onClick={addProfessionalExperience}
+          >
+            + Add professional experience
+
+          </button>
           <div className="spacer" />
         </div>
 
@@ -84,7 +93,14 @@ class InputCV extends React.Component {
 
         <div>
           <div className="small-spacer" />
-          <button type="button" className="add-btn">+ Add education</button>
+          <button
+            type="button"
+            className="add-btn"
+            onClick={addEducation}
+          >
+            + Add education
+
+          </button>
           <div className="spacer" />
         </div>
 
@@ -110,6 +126,8 @@ InputCV.propTypes = {
   handlePersonalDetails: PropTypes.func.isRequired,
   handleProfessionalExperience: PropTypes.func.isRequired,
   handleEducation: PropTypes.func.isRequired,
+  addProfessionalExperience: PropTypes.func.isRequired,
+  addEducation: PropTypes.func.isRequired,
   deleteProfessionalExperience: PropTypes.func.isRequired,
   deleteEducationItem: PropTypes.func.isRequired,
   handleCurrentCheckProfessionalExperience: PropTypes.func.isRequired,

@@ -42,6 +42,8 @@ class Content extends React.Component {
     this.handlePersonalDetails = this.handlePersonalDetails.bind(this);
     this.handleProfessionalExperience = this.handleProfessionalExperience.bind(this);
     this.handleEducation = this.handleEducation.bind(this);
+    this.addProfessionalExperience = this.addProfessionalExperience.bind(this);
+    this.addEducation = this.addEducation.bind(this);
     this.deleteProfessionalExperience = this.deleteProfessionalExperience.bind(this);
     this.deleteEducationItem = this.deleteEducationItem.bind(this);
     // eslint-disable-next-line max-len
@@ -150,6 +152,40 @@ class Content extends React.Component {
     }));
   }
 
+  addProfessionalExperience() {
+    this.setState((state) => ({
+      professionalExperiences: [
+        ...state.professionalExperiences,
+        {
+          id: uniqid(),
+          jobTitle: '',
+          employer: '',
+          startDate: '',
+          endDate: '',
+          current: false,
+          description: '',
+        },
+      ],
+    }));
+  }
+
+  addEducation() {
+    this.setState((state) => ({
+      education: [
+        ...state.education,
+        {
+          id: uniqid(),
+          school: '',
+          degree: '',
+          startDate: '',
+          endDate: '',
+          current: false,
+          description: '',
+        },
+      ],
+    }));
+  }
+
   deleteProfessionalExperience(e) {
     let { professionalExperiences } = this.state;
     professionalExperiences = professionalExperiences.filter((item) => (
@@ -191,6 +227,8 @@ class Content extends React.Component {
           handlePersonalDetails={this.handlePersonalDetails}
           handleProfessionalExperience={this.handleProfessionalExperience}
           handleEducation={this.handleEducation}
+          addProfessionalExperience={this.addProfessionalExperience}
+          addEducation={this.addEducation}
           deleteProfessionalExperience={this.deleteProfessionalExperience}
           deleteEducationItem={this.deleteEducationItem}
           handleCurrentCheckProfessionalExperience={this.handleCurrentCheckProfessionalExperience}
