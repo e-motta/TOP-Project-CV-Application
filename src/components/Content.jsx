@@ -49,6 +49,8 @@ class Content extends React.Component {
     // eslint-disable-next-line max-len
     this.handleCurrentCheckProfessionalExperience = this.handleCurrentCheckProfessionalExperience.bind(this);
     this.handleCurrentCheckEducation = this.handleCurrentCheckEducation.bind(this);
+    this.autoFillExample = this.autoFillExample.bind(this);
+    this.clearPreview = this.clearPreview.bind(this);
   }
 
   handlePersonalDetails(e) {
@@ -202,6 +204,72 @@ class Content extends React.Component {
     this.setState({ education });
   }
 
+  autoFillExample() {
+    this.setState(() => ({
+      firstName: 'John',
+      lastName: 'Doe',
+      jobTitle: 'Software Developer',
+      email: 'johndoe@email.com',
+      phone: '311-555-2368',
+      professionalSummary: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem iusto consequuntur repellat esse magni harum unde voluptatibus quaerat. Nostrum, dolores praesentium numquam blanditiis enim necessitatibus natus nesciunt aliquam magnam iusto inventore ad quisquam ullam impedit assumenda doloremque dolorum odio sunt.',
+      professionalExperiences: [
+        {
+          id: uniqid(),
+          jobTitle: 'Software Developer',
+          employer: 'Tech Company',
+          startDate: '01/2021',
+          endDate: '08/2022',
+          current: false,
+          description: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tenetur sint ad mollitia minus, fugiat neque.',
+        },
+      ],
+      education: [
+        {
+          id: uniqid(),
+          school: 'Harvard',
+          degree: 'Computer Science',
+          startDate: '01/2016',
+          endDate: '01/2021',
+          current: false,
+          description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur et illum corrupti maxime! Explicabo atque, voluptatibus maiores saepe molestias eveniet.',
+        },
+      ],
+    }));
+  }
+
+  clearPreview() {
+    this.setState(() => ({
+      firstName: '',
+      lastName: '',
+      jobTitle: '',
+      email: '',
+      phone: '',
+      professionalSummary: '',
+      professionalExperiences: [
+        {
+          id: uniqid(),
+          jobTitle: '',
+          employer: '',
+          startDate: '',
+          endDate: '',
+          current: false,
+          description: '',
+        },
+      ],
+      education: [
+        {
+          id: uniqid(),
+          school: '',
+          degree: '',
+          startDate: '',
+          endDate: '',
+          current: false,
+          description: '',
+        },
+      ],
+    }));
+  }
+
   render() {
     const {
       firstName,
@@ -233,6 +301,8 @@ class Content extends React.Component {
           deleteEducationItem={this.deleteEducationItem}
           handleCurrentCheckProfessionalExperience={this.handleCurrentCheckProfessionalExperience}
           handleCurrentCheckEducation={this.handleCurrentCheckEducation}
+          autoFillExample={this.autoFillExample}
+          clearPreview={this.clearPreview}
         />
         <PreviewCV
           firstName={firstName}

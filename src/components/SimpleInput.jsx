@@ -48,13 +48,15 @@ class SimpleInput extends React.Component {
       filled,
     } = this.state;
 
+    const requiredIndicator = required ? '*' : '';
+
     return (
       <div className={type === 'date' ? 'input-component date-input-component' : 'input-component'}>
         <label
           htmlFor={parent + title + id}
           className={focused || filled ? 'simple-label-focused' : 'simple-label'}
         >
-          {title}
+          {`${title} ${requiredIndicator}`}
         </label>
         <input
           id={parent + title + id}

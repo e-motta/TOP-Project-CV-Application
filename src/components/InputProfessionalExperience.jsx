@@ -63,6 +63,7 @@ class InputProfessionalExperience extends React.Component {
                   title="End date"
                   type="date"
                   id={professionalExperience.id}
+                  required="required"
                 />
               ) : <div />}
           </div>

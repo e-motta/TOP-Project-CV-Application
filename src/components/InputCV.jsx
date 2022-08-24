@@ -33,6 +33,8 @@ class InputCV extends React.Component {
       deleteEducationItem,
       handleCurrentCheckProfessionalExperience,
       handleCurrentCheckEducation,
+      autoFillExample,
+      clearPreview,
     } = this.props;
 
     return (
@@ -101,6 +103,31 @@ class InputCV extends React.Component {
             + Add education
 
           </button>
+
+          <div className="spacer" />
+          <div className="spacer" />
+
+          <button
+            type="button"
+            className="add-btn"
+            onClick={autoFillExample}
+            style={{ color: '#4cad5e' }}
+          >
+            See an example CV
+          </button>
+
+          <div className="small-spacer" />
+
+          <button
+            type="button"
+            className="add-btn"
+            onClick={clearPreview}
+            style={{ color: '#db6f6f' }}
+          >
+            Clear preview
+          </button>
+
+          <div className="spacer" />
           <div className="spacer" />
         </div>
 
@@ -132,6 +159,8 @@ InputCV.propTypes = {
   deleteEducationItem: PropTypes.func.isRequired,
   handleCurrentCheckProfessionalExperience: PropTypes.func.isRequired,
   handleCurrentCheckEducation: PropTypes.func.isRequired,
+  autoFillExample: PropTypes.func.isRequired,
+  clearPreview: PropTypes.func.isRequired,
 };
 
 export default InputCV;

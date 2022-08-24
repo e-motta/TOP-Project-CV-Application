@@ -63,6 +63,7 @@ class InputEducation extends React.Component {
                   title="End date"
                   type="date"
                   id={educationItem.id}
+                  required="required"
                 />
               ) : <div />}
           </div>
