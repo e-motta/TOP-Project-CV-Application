@@ -1,4 +1,4 @@
-# TOP Project - TODO LIST
+# TOP Project - CV Application
 ![](readme_content/example_1.png)
 ![](readme_content/example_2.png)
 
