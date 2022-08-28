@@ -2,20 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import '../styles/PreviewTitle.css';
 
-class PreviewTitle extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
+function PreviewTitle(props) {
+  const { title } = props;
 
-  render() {
-    const { title } = this.props;
-    return (
-      <span className="preview-title">
-        {title}
-      </span>
-    );
-  }
+  return (
+    <span className="preview-title">
+      {title}
+    </span>
+  );
 }
 
 PreviewTitle.propTypes = {

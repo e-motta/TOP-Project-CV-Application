@@ -2,24 +2,18 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import '../styles/PreviewDates.css';
 
-class PreviewDates extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
+function PreviewDates(props) {
+  const { startDate, endDate } = props;
 
-  render() {
-    const { startDate, endDate } = this.props;
-    return (
-      <span className="preview-title">
-        <span>{startDate}</span>
-        {' '}
-        —
-        {' '}
-        <span>{endDate}</span>
-      </span>
-    );
-  }
+  return (
+    <span className="preview-title">
+      <span>{startDate}</span>
+      {' '}
+      —
+      {' '}
+      <span>{endDate}</span>
+    </span>
+  );
 }
 
 PreviewDates.propTypes = {

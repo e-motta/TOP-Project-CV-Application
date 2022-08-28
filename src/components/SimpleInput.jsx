@@ -1,77 +1,57 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import '../styles/SimpleInput.css';
 
-class SimpleInput extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { focused: false, filled: false };
+function SimpleInput(props) {
+  const {
+    parent,
+    name,
+    title,
+    type,
+    id,
+    required,
+  } = props;
 
-    this.onFocus = this.onFocus.bind(this);
-    this.onBlur = this.onBlur.bind(this);
+  const [focused, setFocused] = useState(false);
+  const [filled, setFilled] = useState(false);
+
+  function onFocus() {
+    setFocused(true);
   }
 
-  onFocus() {
-    this.setState({
-      focused: true,
-    });
-  }
-
-  onBlur(e) {
-    this.setState({
-      focused: false,
-    });
+  function onBlur(e) {
+    setFocused(false);
 
     if (e.target.value !== '') {
-      this.setState({
-        filled: true,
-      });
+      setFilled(true);
     } else {
-      this.setState({
-        filled: false,
-      });
+      setFilled(false);
     }
   }
 
-  render() {
-    const {
-      parent,
-      name,
-      title,
-      type,
-      id,
-      required,
-    } = this.props;
+  const requiredIndicator = required ? '*' : '';
 
-    const {
-      focused,
-      filled,
-    } = this.state;
-
-    const requiredIndicator = required ? '*' : '';
-
-    return (
-      <div className={type === 'date' ? 'input-component date-input-component' : 'input-component'}>
-        <label
-          htmlFor={parent + title + id}
-          className={focused || filled ? 'simple-label-focused' : 'simple-label'}
-        >
-          {`${title} ${requiredIndicator}`}
-        </label>
-        <input
-          id={parent + title + id}
-          type={type === 'date' ? 'text' : type}
-          name={name}
-          className={type === 'date' ? 'simple-input date-input' : 'simple-input'}
-          onFocus={this.onFocus}
-          onBlur={this.onBlur}
-          onInput={this.onFocus}
-          placeholder={type === 'date' && focused ? 'MM/AAAA' : ''}
-          required={required}
-        />
-      </div>
-    );
-  }
+  return (
+    <div className={type === 'date' ? 'input-component date-input-component' : 'input-component'}>
+      <label
+        htmlFor={parent + title + id}
+        className={focused || filled ? 'simple-label-focused' : 'simple-label'}
+      >
+        {`${title} ${requiredIndicator}`}
+      </label>
+      <input
+        id={parent + title + id}
+        type={type === 'date' ? 'text' : type}
+        name={name}
+        className={type === 'date' ? 'simple-input date-input' : 'simple-input'}
+        onFocus={onFocus}
+        onBlur={onBlur}
+        onInput={onFocus}
+        placeholder={type === 'date' && focused ? 'MM/AAAA' : ''}
+        required={required}
+      />
+    </div>
+  );
 }
 
 SimpleInput.defaultProps = {
