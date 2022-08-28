@@ -112,13 +112,11 @@ function Content() {
             return {
               ...item,
               current: true,
-              endDate: 'Present',
             };
           }
           return {
             ...item,
             current: false,
-            endDate: '',
           };
         }
         return item;
@@ -133,13 +131,11 @@ function Content() {
           return {
             ...item,
             current: true,
-            endDate: 'Present',
           };
         }
         return {
           ...item,
           current: false,
-          endDate: '',
         };
       }
       return item;

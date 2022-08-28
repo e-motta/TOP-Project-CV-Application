@@ -9,6 +9,7 @@ function PreviewItem(props) {
   const {
     position, place, startDate, endDate, description,
   } = props;
+
   return (
     <div className="preview-item">
       <h3 className="title-item">
