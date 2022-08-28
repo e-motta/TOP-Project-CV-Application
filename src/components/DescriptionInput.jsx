@@ -1,60 +1,45 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import '../styles/DescriptionInput.css';
 
-class DescriptionInput extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { focused: false, filled: false };
+function DescriptionInput(props) {
+  const { parent, name, title } = props;
 
-    this.onFocus = this.onFocus.bind(this);
-    this.onBlur = this.onBlur.bind(this);
+  const [focused, setFocused] = useState(false);
+  const [filled, setFilled] = useState(false);
+
+  function onFocus() {
+    setFocused(true);
   }
 
-  onFocus() {
-    this.setState({
-      focused: true,
-    });
-  }
-
-  onBlur(e) {
-    this.setState({
-      focused: false,
-    });
+  function onBlur(e) {
+    setFocused(false);
 
     if (e.target.value !== '') {
-      this.setState({
-        filled: true,
-      });
+      setFilled(true);
     } else {
-      this.setState({
-        filled: false,
-      });
+      setFilled(false);
     }
   }
 
-  render() {
-    const { parent, name, title } = this.props;
-    const { focused, filled } = this.state;
-    return (
-      <div className="input-component description-component">
-        <label
-          htmlFor={parent + title}
-          className={focused || filled ? 'simple-label-focused' : 'simple-label'}
-        >
-          {title}
-        </label>
-        <textarea
-          id={parent + title}
-          name={name}
-          className="simple-input description-input"
-          onFocus={this.onFocus}
-          onBlur={this.onBlur}
-          onInput={this.onFocus}
-        />
-      </div>
-    );
-  }
+  return (
+    <div className="input-component description-component">
+      <label
+        htmlFor={parent + title}
+        className={focused || filled ? 'simple-label-focused' : 'simple-label'}
+      >
+        {title}
+      </label>
+      <textarea
+        id={parent + title}
+        name={name}
+        className="simple-input description-input"
+        onFocus={onFocus}
+        onBlur={onBlur}
+        onInput={onFocus}
+      />
+    </div>
+  );
 }
 
 DescriptionInput.propTypes = {

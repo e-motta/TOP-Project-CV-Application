@@ -2,38 +2,29 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import '../styles/CheckInput.css';
 
-class CheckInput extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
+function CheckInput(props) {
+  const {
+    name, title, id, onCheck,
+  } = props;
+  let { checked } = props;
+  if (checked === 'on') checked = true;
 
-  render() {
-    const {
-      name, title, id, onCheck,
-    } = this.props;
-
-    let { checked } = this.props;
-
-    if (checked === 'on') checked = true;
-
-    return (
-      <div className="check-input">
-        <input
-          id={id}
-          name={name}
-          type="checkbox"
-          onChange={onCheck}
-          defaultChecked={checked}
-        />
-        <label
-          htmlFor={id}
-        >
-          {title}
-        </label>
-      </div>
-    );
-  }
+  return (
+    <div className="check-input">
+      <input
+        id={id}
+        name={name}
+        type="checkbox"
+        onChange={onCheck}
+        defaultChecked={checked}
+      />
+      <label
+        htmlFor={id}
+      >
+        {title}
+      </label>
+    </div>
+  );
 }
 
 CheckInput.defaultProps = {

@@ -8,132 +8,125 @@ import InputPersonalDetails from './InputPersonalDetails';
 import InputProfessionalExperience from './InputProfessionalExperience';
 import InputEducation from './InputEducation';
 
-class InputCV extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
+function InputCV(props) {
+  const {
+    firstName,
+    lastName,
+    jobTitle,
+    email,
+    phone,
+    professionalSummary,
+    professionalExperiences,
+    education,
+    handlePersonalDetails,
+    handleProfessionalExperience,
+    handleEducation,
+    addProfessionalExperience,
+    addEducation,
+    deleteProfessionalExperience,
+    deleteEducationItem,
+    handleCurrentCheckProfessionalExperience,
+    handleCurrentCheckEducation,
+    autoFillExample,
+    clearPreview,
+  } = props;
 
-  render() {
-    const {
-      firstName,
-      lastName,
-      jobTitle,
-      email,
-      phone,
-      professionalSummary,
-      professionalExperiences,
-      education,
-      handlePersonalDetails,
-      handleProfessionalExperience,
-      handleEducation,
-      addProfessionalExperience,
-      addEducation,
-      deleteProfessionalExperience,
-      deleteEducationItem,
-      handleCurrentCheckProfessionalExperience,
-      handleCurrentCheckEducation,
-      autoFillExample,
-      clearPreview,
-    } = this.props;
+  return (
+    <div className="input-cv">
+      <SectionTitle title="Personal Details" />
 
-    return (
-      <div className="input-cv">
-        <SectionTitle title="Personal Details" />
+      <InputPersonalDetails
+        firstName={firstName}
+        lastName={lastName}
+        jobTitle={jobTitle}
+        email={email}
+        phone={phone}
+        professionalSummary={professionalSummary}
+        handlePersonalDetails={handlePersonalDetails}
+      />
+      <div className="spacer" />
 
-        <InputPersonalDetails
-          firstName={firstName}
-          lastName={lastName}
-          jobTitle={jobTitle}
-          email={email}
-          phone={phone}
-          professionalSummary={professionalSummary}
-          handlePersonalDetails={handlePersonalDetails}
-        />
+      <SectionTitle title="Professional Experience" />
+
+      {professionalExperiences.map((item) => (
+        <div key={item.id}>
+          <InputProfessionalExperience
+            professionalExperience={item}
+            handleProfessionalExperience={handleProfessionalExperience}
+            deleteProfessionalExperience={deleteProfessionalExperience}
+            handleCurrentCheckProfessionalExperience={handleCurrentCheckProfessionalExperience}
+          />
+          <div className="small-spacer" />
+        </div>
+      ))}
+
+      <div>
+        <div className="small-spacer" />
+        <button
+          type="button"
+          className="add-btn"
+          onClick={addProfessionalExperience}
+        >
+          + Add professional experience
+
+        </button>
+        <div className="spacer" />
+      </div>
+
+      <SectionTitle title="Education" />
+
+      {education.map((item) => (
+        <div key={item.id}>
+          <InputEducation
+            educationItem={item}
+            handleEducation={handleEducation}
+            deleteEducationItem={deleteEducationItem}
+            handleCurrentCheckEducation={handleCurrentCheckEducation}
+          />
+          <div className="small-spacer" />
+        </div>
+      ))}
+
+      <div>
+        <div className="small-spacer" />
+        <button
+          type="button"
+          className="add-btn"
+          onClick={addEducation}
+        >
+          + Add education
+
+        </button>
+
+        <div className="spacer" />
         <div className="spacer" />
 
-        <SectionTitle title="Professional Experience" />
+        <button
+          type="button"
+          className="add-btn"
+          onClick={autoFillExample}
+          style={{ color: '#4cad5e' }}
+        >
+          See an example CV
+        </button>
 
-        {professionalExperiences.map((item) => (
-          <div key={item.id}>
-            <InputProfessionalExperience
-              professionalExperience={item}
-              handleProfessionalExperience={handleProfessionalExperience}
-              deleteProfessionalExperience={deleteProfessionalExperience}
-              handleCurrentCheckProfessionalExperience={handleCurrentCheckProfessionalExperience}
-            />
-            <div className="small-spacer" />
-          </div>
-        ))}
+        <div className="small-spacer" />
 
-        <div>
-          <div className="small-spacer" />
-          <button
-            type="button"
-            className="add-btn"
-            onClick={addProfessionalExperience}
-          >
-            + Add professional experience
+        <button
+          type="button"
+          className="add-btn"
+          onClick={clearPreview}
+          style={{ color: '#db6f6f' }}
+        >
+          Clear preview
+        </button>
 
-          </button>
-          <div className="spacer" />
-        </div>
-
-        <SectionTitle title="Education" />
-
-        {education.map((item) => (
-          <div key={item.id}>
-            <InputEducation
-              educationItem={item}
-              handleEducation={handleEducation}
-              deleteEducationItem={deleteEducationItem}
-              handleCurrentCheckEducation={handleCurrentCheckEducation}
-            />
-            <div className="small-spacer" />
-          </div>
-        ))}
-
-        <div>
-          <div className="small-spacer" />
-          <button
-            type="button"
-            className="add-btn"
-            onClick={addEducation}
-          >
-            + Add education
-
-          </button>
-
-          <div className="spacer" />
-          <div className="spacer" />
-
-          <button
-            type="button"
-            className="add-btn"
-            onClick={autoFillExample}
-            style={{ color: '#4cad5e' }}
-          >
-            See an example CV
-          </button>
-
-          <div className="small-spacer" />
-
-          <button
-            type="button"
-            className="add-btn"
-            onClick={clearPreview}
-            style={{ color: '#db6f6f' }}
-          >
-            Clear preview
-          </button>
-
-          <div className="spacer" />
-          <div className="spacer" />
-        </div>
-
+        <div className="spacer" />
+        <div className="spacer" />
       </div>
-    );
-  }
+
+    </div>
+  );
 }
 
 InputCV.defaultProps = {

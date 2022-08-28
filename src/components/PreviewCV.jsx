@@ -8,94 +8,87 @@ import PreviewDescription from './PreviewDescription';
 import SectionTitle from './SectionTitle';
 import PreviewItem from './PreviewItem';
 
-class PreviewCV extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
+function PreviewCV(props) {
+  const {
+    firstName,
+    lastName,
+    jobTitle,
+    email,
+    phone,
+    professionalSummary,
+    professionalExperiences,
+    education,
+  } = props;
 
-  render() {
-    const {
-      firstName,
-      lastName,
-      jobTitle,
-      email,
-      phone,
-      professionalSummary,
-      professionalExperiences,
-      education,
-    } = this.props;
-
-    return (
-      <div className="preview-cv">
-        <PreviewHeader
-          firstName={firstName}
-          lastName={lastName}
-          jobTitle={jobTitle}
-          email={email}
-          phone={phone}
+  return (
+    <div className="preview-cv">
+      <PreviewHeader
+        firstName={firstName}
+        lastName={lastName}
+        jobTitle={jobTitle}
+        email={email}
+        phone={phone}
+      />
+      <div className="preview-body">
+        <PreviewDescription
+          text={professionalSummary}
         />
-        <div className="preview-body">
-          <PreviewDescription
-            text={professionalSummary}
-          />
-          <div className="spacer" />
+        <div className="spacer" />
 
-          {professionalExperiences.length !== 0
-          && (professionalExperiences[0].jobTitle !== ''
-              && professionalExperiences[0].employer !== '')
+        {professionalExperiences.length !== 0
+        && (professionalExperiences[0].jobTitle !== ''
+            && professionalExperiences[0].employer !== '')
+          ? (
+            <div>
+              <SectionTitle title="Professional Experience" />
+              <div className="small-spacer" />
+            </div>
+          )
+          : <div />}
+
+        {professionalExperiences.map((item) => (
+          item.jobTitle !== '' && item.employer !== ''
             ? (
-              <div>
-                <SectionTitle title="Professional Experience" />
-                <div className="small-spacer" />
-              </div>
+              <PreviewItem
+                position={item.jobTitle}
+                place={item.employer}
+                startDate={item.startDate}
+                endDate={item.endDate}
+                description={item.description}
+                key={item.id}
+              />
             )
-            : <div />}
+            : <div key={item.id} />
+        ))}
 
-          {professionalExperiences.map((item) => (
-            item.jobTitle !== '' && item.employer !== ''
-              ? (
-                <PreviewItem
-                  position={item.jobTitle}
-                  place={item.employer}
-                  startDate={item.startDate}
-                  endDate={item.endDate}
-                  description={item.description}
-                  key={item.id}
-                />
-              )
-              : <div key={item.id} />
-          ))}
+        {education.length !== 0
+        && (education[0].school !== ''
+            || education[0].degree !== '')
+          ? (
+            <div>
+              <SectionTitle title="Education" />
+              <div className="small-spacer" />
+            </div>
+          )
+          : <div />}
 
-          {education.length !== 0
-          && (education[0].school !== ''
-              || education[0].degree !== '')
+        {education.map((item) => (
+          item.degree !== '' && item.school !== ''
             ? (
-              <div>
-                <SectionTitle title="Education" />
-                <div className="small-spacer" />
-              </div>
+              <PreviewItem
+                position={item.degree}
+                place={item.school}
+                startDate={item.startDate}
+                endDate={item.endDate}
+                description={item.description}
+                key={item.id}
+              />
             )
-            : <div />}
-
-          {education.map((item) => (
-            item.degree !== '' && item.school !== ''
-              ? (
-                <PreviewItem
-                  position={item.degree}
-                  place={item.school}
-                  startDate={item.startDate}
-                  endDate={item.endDate}
-                  description={item.description}
-                  key={item.id}
-                />
-              )
-              : <div key={item.id} />
-          ))}
-        </div>
+            : <div key={item.id} />
+        ))}
       </div>
-    );
-  }
+    </div>
+  );
 }
 
 PreviewCV.defaultProps = {
